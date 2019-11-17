@@ -1,6 +1,6 @@
 ﻿namespace Maquina_Turing
 {
-    partial class Form1
+    partial class MachineTuring
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -33,6 +33,10 @@
             this.txtStates = new System.Windows.Forms.TextBox();
             this.txtValues = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.dataGridStates = new System.Windows.Forms.DataGridView();
+            this.dataGridValues = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridValues)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +63,6 @@
             this.txtStates.Name = "txtStates";
             this.txtStates.Size = new System.Drawing.Size(110, 22);
             this.txtStates.TabIndex = 2;
-            this.txtStates.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtValues
             // 
@@ -78,18 +81,42 @@
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form1
+            // dataGridStates
+            // 
+            this.dataGridStates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridStates.Location = new System.Drawing.Point(26, 62);
+            this.dataGridStates.Name = "dataGridStates";
+            this.dataGridStates.RowHeadersWidth = 51;
+            this.dataGridStates.RowTemplate.Height = 24;
+            this.dataGridStates.Size = new System.Drawing.Size(180, 297);
+            this.dataGridStates.TabIndex = 5;
+            // 
+            // dataGridValues
+            // 
+            this.dataGridValues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridValues.Location = new System.Drawing.Point(229, 63);
+            this.dataGridValues.Name = "dataGridValues";
+            this.dataGridValues.RowHeadersWidth = 51;
+            this.dataGridValues.RowTemplate.Height = 24;
+            this.dataGridValues.Size = new System.Drawing.Size(652, 295);
+            this.dataGridValues.TabIndex = 6;
+            // 
+            // MachineTuring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 396);
+            this.ClientSize = new System.Drawing.Size(918, 541);
+            this.Controls.Add(this.dataGridValues);
+            this.Controls.Add(this.dataGridStates);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.txtValues);
             this.Controls.Add(this.txtStates);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "MachineTuring";
             this.Text = "Máquina de Turing";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStates)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridValues)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,6 +129,8 @@
         private System.Windows.Forms.TextBox txtStates;
         private System.Windows.Forms.TextBox txtValues;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.DataGridView dataGridStates;
+        private System.Windows.Forms.DataGridView dataGridValues;
     }
 }
 

@@ -47,17 +47,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="View\CaptureRulesTableAction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\CaptureRulesTableAction.Designer.cs">
+      <DependentUpon>CaptureRulesTableAction.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Rule.cs" />
+    <Compile Include="View\MachineTuring.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MachineTuring.Designer.cs">
+      <DependentUpon>MachineTuring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Rule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="View\CaptureRulesTableAction.resx">
+      <DependentUpon>CaptureRulesTableAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MachineTuring.resx">
+      <DependentUpon>MachineTuring.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
