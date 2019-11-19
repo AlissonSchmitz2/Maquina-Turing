@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Maquina_Turing
 {
-    class Rules
+    class Rule
     {
         private int state;
         private string valuee;
         private string direction;
 
-        public Rules(int state, string valuee, string direction)
+        public Rule(int state, string valuee, string direction)
         {
             this.state = state;
             this.valuee = valuee;

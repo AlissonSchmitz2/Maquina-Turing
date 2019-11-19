@@ -54,9 +54,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(22, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 17);
+            this.label2.Size = new System.Drawing.Size(56, 17);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Estado Q:";
+            this.label2.Text = "Estado:";
             // 
             // cbxStates
             // 
@@ -69,7 +69,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(160, 80);
+            this.label3.Location = new System.Drawing.Point(308, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 17);
             this.label3.TabIndex = 3;
@@ -82,7 +82,7 @@
             "Direita",
             "Esquerda",
             "Para"});
-            this.cbxDirection.Location = new System.Drawing.Point(159, 111);
+            this.cbxDirection.Location = new System.Drawing.Point(307, 111);
             this.cbxDirection.Name = "cbxDirection";
             this.cbxDirection.Size = new System.Drawing.Size(119, 24);
             this.cbxDirection.TabIndex = 4;
@@ -90,7 +90,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(296, 80);
+            this.label4.Location = new System.Drawing.Point(160, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 17);
             this.label4.TabIndex = 5;
@@ -99,7 +99,7 @@
             // cbxValue
             // 
             this.cbxValue.FormattingEnabled = true;
-            this.cbxValue.Location = new System.Drawing.Point(299, 111);
+            this.cbxValue.Location = new System.Drawing.Point(163, 111);
             this.cbxValue.Name = "cbxValue";
             this.cbxValue.Size = new System.Drawing.Size(119, 24);
             this.cbxValue.TabIndex = 6;
@@ -112,6 +112,7 @@
             this.btnConfirmar.TabIndex = 7;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // button1
             // 
@@ -135,7 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 251);
+            this.ClientSize = new System.Drawing.Size(523, 251);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnConfirmar);
@@ -154,7 +155,6 @@
         }
 
         #endregion
-
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbxStates;

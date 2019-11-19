@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Maquina_Turing.View;
 using Microsoft.VisualBasic;
 
 namespace Maquina_Turing
@@ -17,9 +19,9 @@ namespace Maquina_Turing
         private int amountValues;
         private int amountStates;
         private String[] arrayStates;
-        private String[] arrayValues = null;
+        private String[] arrayValues;
         private char[] entry;
-        private Rule[][] matrixRules;
+        private Rule[,] matrixRules;
         private String aux;
 
         public MachineTuring()
@@ -31,18 +33,7 @@ namespace Maquina_Turing
         {
             if (captureValues())
             {
-
-                dataGridStates.Columns.Add("states", "Estados");
-                for (int i = 0; i < amountStates; i++)
-                {
-                    dataGridStates.Rows.Add(i.ToString());
-                }
-
-                for (int i = 0; i < arrayValues.Length; i++)
-                {
-                    dataGridValues.Columns.Add(i.ToString(), arrayValues[i]);
-                }
-
+                createColumnTables();
                 btnConfirm.Enabled = false;
             }
             else
@@ -50,11 +41,11 @@ namespace Maquina_Turing
                 btnConfirm.Enabled = true;
             }
 
-            
+
             if (captureRules())
             {
-                
-                //TODO: hanilitar botao iniciar 
+
+                //TODO: habilitar botao iniciar 
                 //listarTabela(estados, valores);
             }
 
@@ -67,10 +58,40 @@ namespace Maquina_Turing
             */
         }
 
+        private void createColumnTables()
+        {
+
+            dataGridStates.Columns.Add("states", "Estados");
+            for (int i = 0; i < amountStates; i++)
+            {
+                dataGridStates.Rows.Add(i.ToString());
+            }
+
+            for (int i = 0; i < amountValues; i++)
+            {
+                dataGridValues.Columns.Add(i.ToString(), arrayValues[i]);
+            }
+
+            for (int i = 0; i < amountStates; i++)
+            {
+                // cria uma linha
+                DataGridViewRow item = new DataGridViewRow();
+                item.CreateCells(dataGridValues);
+
+                for (int j = 0; j < amountValues; j++)
+                {
+                    item.Cells[j].Value = string.Format("{0}",i) + string.Format("{0}", j);
+                }
+
+                // adiciona na grid
+                dataGridValues.Rows.Add(item);
+            }
+        }
+
         private bool validateFields(TextBox field)
         {
             if (string.IsNullOrEmpty(field.Text) || !isNumber(field.Text))
-            {                 
+            {
                 return false;
             }
 
@@ -107,7 +128,8 @@ namespace Maquina_Turing
             {
                 MessageBox.Show("Quantidade de valores inválidos!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
-            }else
+            }
+            else
             {
                 amountValues = int.Parse(txtValues.Text);
                 if (amountValues < 1)
@@ -128,10 +150,12 @@ namespace Maquina_Turing
                         MessageBox.Show("Digite um valor válido!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         aux = Interaction.InputBox("VALOR  " + i + ":");
                     }
-                    else if (validateValues(aux)) {
+                    else if (validateValues(aux))
+                    {
                         MessageBox.Show("Valor informado já existe!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         aux = Interaction.InputBox("Valor de " + i + ":");
-                    } else
+                    }
+                    else
                     {
                         break;
                     }
@@ -145,12 +169,28 @@ namespace Maquina_Turing
 
         private bool captureRules()
         {
+            arrayStates = new String[amountStates];
+            matrixRules = new Rule[amountStates, amountValues];
 
+            for (int x = 0; x < arrayStates.Length; x++)
+            {
+                for (int y = 0; y < arrayValues.Length; y++)
+                {
+                    matrixRules[x, y] = new CaptureRulesTableAction(x, arrayValues[y]).ShowDialog();
 
-            
-            
+                    //CaptureRulesTableAction cap;
+                    //cap = new CaptureRulesTableAction(x, arrayValues[y]);
+                    //cap.ControlAdded
+                }
+            }
+
 
             return true;
+        }
+
+        private void initThread()
+        {
+
         }
 
         private bool validateValues(string x)
