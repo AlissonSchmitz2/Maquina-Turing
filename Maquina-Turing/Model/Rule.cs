@@ -54,5 +54,8 @@ namespace Maquina_Turing
                 direction = value;
             }
         }
+
+        public string formatRule() => state + ";" + valuee + ";" + direction;
+
     }
 }

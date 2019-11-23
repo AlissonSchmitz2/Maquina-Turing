@@ -18,11 +18,12 @@ namespace Maquina_Turing
 
         private int amountValues;
         private int amountStates;
-        private String[] arrayStates;
-        private String[] arrayValues;
+        private string[] arrayStates;
+        private string[] arrayValues;
         private char[] entry;
         private Rule[,] matrixRules;
-        private String aux;
+        private Rule rule;
+        private string aux;
 
         public MachineTuring()
         {
@@ -44,23 +45,34 @@ namespace Maquina_Turing
 
             if (captureRules())
             {
+                insertValuesTable();
 
                 //TODO: habilitar botao iniciar 
                 //listarTabela(estados, valores);
             }
+        }
 
-            /*
-            for (int i=0; i< amountStates; i++)
+        private void insertValuesTable()
+        {
+            for (int i = 0; i < amountStates; i++)
             {
-                dataGridStates.Rows.Add(i.ToString());
-            }
+                // cria uma linha
+                DataGridViewRow item = new DataGridViewRow();
+                item.CreateCells(dataGridValues);
 
-            */
+                for (int j = 0; j < amountValues; j++)
+                {
+                    rule = matrixRules[i, j];
+                    item.Cells[j].Value = rule != null ? rule.formatRule() : "-";
+                }
+
+                // adiciona na grid
+                dataGridValues.Rows.Add(item);
+            }
         }
 
         private void createColumnTables()
         {
-
             dataGridStates.Columns.Add("states", "Estados");
             for (int i = 0; i < amountStates; i++)
             {
@@ -70,21 +82,6 @@ namespace Maquina_Turing
             for (int i = 0; i < amountValues; i++)
             {
                 dataGridValues.Columns.Add(i.ToString(), arrayValues[i]);
-            }
-
-            for (int i = 0; i < amountStates; i++)
-            {
-                // cria uma linha
-                DataGridViewRow item = new DataGridViewRow();
-                item.CreateCells(dataGridValues);
-
-                for (int j = 0; j < amountValues; j++)
-                {
-                    item.Cells[j].Value = string.Format("{0}",i) + string.Format("{0}", j);
-                }
-
-                // adiciona na grid
-                dataGridValues.Rows.Add(item);
             }
         }
 
@@ -170,27 +167,25 @@ namespace Maquina_Turing
         private bool captureRules()
         {
             arrayStates = new String[amountStates];
-            matrixRules = new Rule[amountStates, amountValues];
+            for (int i = 0; i < amountStates; i++)
+            {
+                arrayStates[i] = i.ToString();
+            }
 
+            matrixRules = new Rule[amountStates, amountValues];
             for (int x = 0; x < arrayStates.Length; x++)
             {
                 for (int y = 0; y < arrayValues.Length; y++)
                 {
-                    matrixRules[x, y] = new CaptureRulesTableAction(x, arrayValues[y]).ShowDialog();
+                    CaptureRulesTableAction cap = new CaptureRulesTableAction(x, arrayValues[y], arrayStates, arrayValues);
+                    cap.ShowDialog();
 
-                    //CaptureRulesTableAction cap;
-                    //cap = new CaptureRulesTableAction(x, arrayValues[y]);
-                    //cap.ControlAdded
+                    matrixRules[x, y] = ((Rule)cap.getRule());
                 }
             }
 
 
             return true;
-        }
-
-        private void initThread()
-        {
-
         }
 
         private bool validateValues(string x)

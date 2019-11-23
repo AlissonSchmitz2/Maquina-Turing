@@ -10,33 +10,25 @@ using System.Windows.Forms;
 
 namespace Maquina_Turing.View
 {
-    
+
     public partial class CaptureRulesTableAction : Form
     {
-        private Rule rule;
-
-        public CaptureRulesTableAction(int state, string value)
+        public object rule;
+        public CaptureRulesTableAction(int stateCurrent, string valueCurrent, string[] states, string[] values)
         {
             InitializeComponent();
-            label1.Text = "Estado " + state + ", " + value;
+            label1.Text = "Estado " + stateCurrent + ", " + valueCurrent;
+
+            cbxStates.Items.AddRange(states);
+            cbxValue.Items.AddRange(values);
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             rule = new Rule(int.Parse(cbxStates.Text), cbxValue.Text, cbxDirection.Text);
+            Dispose();
         }
 
-        public Rule GetRule
-        {
-            get
-            {
-                return rule;
-            }
-            set
-            {
-                rule = value;
-            }
-        }
-
+        public object getRule() => rule;
     }
 }
