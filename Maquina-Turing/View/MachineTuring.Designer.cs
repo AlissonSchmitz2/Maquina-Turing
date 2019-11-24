@@ -1,4 +1,6 @@
-﻿namespace Maquina_Turing
+﻿using System.Windows.Forms;
+
+namespace Maquina_Turing
 {
     partial class MachineTuring
     {
@@ -35,6 +37,10 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.dataGridStates = new System.Windows.Forms.DataGridView();
             this.dataGridValues = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtEntry = new System.Windows.Forms.TextBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnRestart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridValues)).BeginInit();
             this.SuspendLayout();
@@ -73,9 +79,9 @@
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(586, 16);
+            this.btnConfirm.Location = new System.Drawing.Point(589, 17);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(113, 31);
+            this.btnConfirm.Size = new System.Drawing.Size(110, 30);
             this.btnConfirm.TabIndex = 4;
             this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = true;
@@ -83,29 +89,76 @@
             // 
             // dataGridStates
             // 
+            this.dataGridStates.AllowUserToResizeColumns = false;
+            this.dataGridStates.AllowUserToResizeRows = false;
             this.dataGridStates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridStates.Location = new System.Drawing.Point(26, 62);
             this.dataGridStates.Name = "dataGridStates";
+            this.dataGridStates.ReadOnly = true;
             this.dataGridStates.RowHeadersWidth = 51;
             this.dataGridStates.RowTemplate.Height = 24;
-            this.dataGridStates.Size = new System.Drawing.Size(180, 297);
+            this.dataGridStates.Size = new System.Drawing.Size(221, 297);
             this.dataGridStates.TabIndex = 5;
             // 
             // dataGridValues
             // 
+            this.dataGridValues.AllowUserToResizeColumns = false;
+            this.dataGridValues.AllowUserToResizeRows = false;
             this.dataGridValues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridValues.Location = new System.Drawing.Point(229, 63);
+            this.dataGridValues.Location = new System.Drawing.Point(273, 63);
             this.dataGridValues.Name = "dataGridValues";
+            this.dataGridValues.ReadOnly = true;
             this.dataGridValues.RowHeadersWidth = 51;
             this.dataGridValues.RowTemplate.Height = 24;
-            this.dataGridValues.Size = new System.Drawing.Size(652, 295);
+            this.dataGridValues.Size = new System.Drawing.Size(543, 295);
             this.dataGridValues.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 383);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 17);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Entrada: ";
+            // 
+            // txtEntry
+            // 
+            this.txtEntry.Location = new System.Drawing.Point(95, 380);
+            this.txtEntry.Name = "txtEntry";
+            this.txtEntry.Size = new System.Drawing.Size(472, 22);
+            this.txtEntry.TabIndex = 8;
+            // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(589, 376);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(110, 31);
+            this.btnStart.TabIndex = 9;
+            this.btnStart.Text = "Iniciar";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // btnRestart
+            // 
+            this.btnRestart.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnRestart.Location = new System.Drawing.Point(710, 16);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(106, 31);
+            this.btnRestart.TabIndex = 10;
+            this.btnRestart.Text = "Reiniciar";
+            this.btnRestart.UseVisualStyleBackColor = false;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
             // MachineTuring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 541);
+            this.ClientSize = new System.Drawing.Size(845, 433);
+            this.Controls.Add(this.btnRestart);
+            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.txtEntry);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridValues);
             this.Controls.Add(this.dataGridStates);
             this.Controls.Add(this.btnConfirm);
@@ -114,6 +167,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "MachineTuring";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Máquina de Turing";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStates)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridValues)).EndInit();
@@ -131,6 +185,10 @@
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.DataGridView dataGridStates;
         private System.Windows.Forms.DataGridView dataGridValues;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtEntry;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnRestart;
     }
 }
 

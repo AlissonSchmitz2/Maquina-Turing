@@ -20,7 +20,6 @@ namespace Maquina_Turing
         private int amountStates;
         private string[] arrayStates;
         private string[] arrayValues;
-        private char[] entry;
         private Rule[,] matrixRules;
         private Rule rule;
         private string aux;
@@ -36,19 +35,20 @@ namespace Maquina_Turing
             {
                 createColumnTables();
                 btnConfirm.Enabled = false;
+
+                if (captureRules())
+                {
+                    insertValuesTable();
+                }
+                else
+                {
+                    btnConfirm.Enabled = true;
+                }
+
             }
             else
             {
                 btnConfirm.Enabled = true;
-            }
-
-
-            if (captureRules())
-            {
-                insertValuesTable();
-
-                //TODO: habilitar botao iniciar 
-                //listarTabela(estados, valores);
             }
         }
 
@@ -73,12 +73,14 @@ namespace Maquina_Turing
 
         private void createColumnTables()
         {
+            // Inserts state values ​​and columns
             dataGridStates.Columns.Add("states", "Estados");
             for (int i = 0; i < amountStates; i++)
             {
                 dataGridStates.Rows.Add(i.ToString());
             }
 
+            // Inserts the columns with the values ​​given in the table.
             for (int i = 0; i < amountValues; i++)
             {
                 dataGridValues.Columns.Add(i.ToString(), arrayValues[i]);
@@ -106,6 +108,7 @@ namespace Maquina_Turing
 
         private bool captureValues()
         {
+            // Validate values of states
             if (!validateFields(txtStates))
             {
                 MessageBox.Show("Quantidade de estados inválidos!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -121,6 +124,7 @@ namespace Maquina_Turing
                 }
             }
 
+            // Validate values of values table
             if (!validateFields(txtValues))
             {
                 MessageBox.Show("Quantidade de valores inválidos!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -136,6 +140,7 @@ namespace Maquina_Turing
                 }
             }
 
+            // captures the amount of values ​​entered
             arrayValues = new String[amountValues];
             for (int i = 0; i < amountValues; i++)
             {
@@ -160,12 +165,12 @@ namespace Maquina_Turing
                 arrayValues[i] = aux;
             }
 
-
             return true;
         }
 
         private bool captureRules()
         {
+            // insert state values ​​into array
             arrayStates = new String[amountStates];
             for (int i = 0; i < amountStates; i++)
             {
@@ -177,13 +182,17 @@ namespace Maquina_Turing
             {
                 for (int y = 0; y < arrayValues.Length; y++)
                 {
+                    // go through each position to get the selected values
                     CaptureRulesTableAction cap = new CaptureRulesTableAction(x, arrayValues[y], arrayStates, arrayValues);
                     cap.ShowDialog();
 
                     matrixRules[x, y] = ((Rule)cap.getRule());
+                    if (cap.Exit())
+                    {
+                        return false;
+                    }
                 }
             }
-
 
             return true;
         }
@@ -217,6 +226,16 @@ namespace Maquina_Turing
             }
 
             return false;
+        }
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            new RunMachineTuring(txtEntry.Text, matrixRules, arrayValues, amountStates).ShowDialog();
         }
     }
 }

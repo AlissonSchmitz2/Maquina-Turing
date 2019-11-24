@@ -1,4 +1,6 @@
-﻿namespace Maquina_Turing.View
+﻿using System.Windows.Forms;
+
+namespace Maquina_Turing.View
 {
     partial class CaptureRulesTableAction
     {
@@ -60,6 +62,7 @@
             // 
             // cbxStates
             // 
+            this.cbxStates.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxStates.FormattingEnabled = true;
             this.cbxStates.Location = new System.Drawing.Point(25, 111);
             this.cbxStates.Name = "cbxStates";
@@ -77,6 +80,7 @@
             // 
             // cbxDirection
             // 
+            this.cbxDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDirection.FormattingEnabled = true;
             this.cbxDirection.Items.AddRange(new object[] {
             "Direita",
@@ -98,6 +102,7 @@
             // 
             // cbxValue
             // 
+            this.cbxValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxValue.FormattingEnabled = true;
             this.cbxValue.Location = new System.Drawing.Point(163, 111);
             this.cbxValue.Name = "cbxValue";
@@ -122,6 +127,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Sair";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -148,6 +154,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "CaptureRulesTableAction";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Regras Tabela de Ação";
             this.ResumeLayout(false);
             this.PerformLayout();
