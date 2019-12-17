@@ -44,7 +44,6 @@ namespace Maquina_Turing
                 {
                     btnConfirm.Enabled = true;
                 }
-
             }
             else
             {
@@ -144,7 +143,7 @@ namespace Maquina_Turing
             arrayValues = new String[amountValues];
             for (int i = 0; i < amountValues; i++)
             {
-                aux = Interaction.InputBox("Valor de " + i + ":", "Valores de ");
+                aux = Interaction.InputBox("Informe o valor " + (i + 1) + ":", "Valores");
                 while (true)
                 {
                     if (string.IsNullOrEmpty(aux) || aux.Length > 1)
